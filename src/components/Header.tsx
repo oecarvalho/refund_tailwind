@@ -2,6 +2,8 @@ import logoSvg from '../assets/logo.svg';
 import logoutSvg from '../assets/logout.svg';
 import { useAuth } from '../hooks/useAuth';
 
+
+
 export function Header(){
     const auth = useAuth()
 
