@@ -69,7 +69,6 @@ export function Refund(){
             }
 
             if(error instanceof AxiosError){
-                console.error("Erro da API:", error.response);
                 return alert(error.response?.data.message)
                 
             } 
@@ -82,18 +81,17 @@ export function Refund(){
         
     }
 
-    async function fetchRefund(id:string){
+        async function fetchRefund(id: string){
         try {
             const {data} = await api.get<RefundAPIResponse>(`/refunds/${id}`)
-            console.log(data)
+    
             setName(data.name)
             setCategory(data.category)
             setAmount(formatCurrency(data.amount))
             setFileURL(data.filename)
-            
+
         } catch (error) {
             console.log(error)
-
             if(error instanceof AxiosError){
                 return alert(error.response?.data.message)
             }
@@ -132,7 +130,7 @@ export function Refund(){
             </div>
             
             {
-                params.id && fileURL ? (<a href="https://www.linkedin.com.br" target="_blank" className="text-sm text-green-100 font-semibold flex items-center justify-center gap-2 my-6 hover:opacity-70 transition ease-linear">
+                params.id && fileURL ? (<a href={`http://localhost:3333/uploads/${fileURL}`} target="_blank" className="text-sm text-green-100 font-semibold flex items-center justify-center gap-2 my-6 hover:opacity-70 transition ease-linear">
                     <img src={fileSvg} alt="" />
                         Abrir Comprovante
                     </a>
